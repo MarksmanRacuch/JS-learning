@@ -1,0 +1,63 @@
+th, td
+{
+    border: 1px solid black;
+    
+    
+}
+#tabela
+{
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+}
+#ubbe
+{
+    height: 500px;
+    width: 500px;
+}
+header
+{
+    color: #f8f4f4ee;
+    text-align: center;
+    height: 370px;
+    background-color: #a809ad97;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+nav
+{
+    color: #f8f4f4ee;
+    background-color: #43785197;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 50%;
+    float: left;
+    
+}
+
+section
+{
+    color: #f8f4f4ee;
+    text-align: center;
+    background-color: #6ca93a97;
+    width: 50%;
+    height: 245px;
+    float: left;
+    
+    
+}
+aside
+{
+    color: #f8f4f4ee;
+    text-align: center;
+    
+    width: 50%;
+    
+    
+}
+footer
+{
+    color: #f8f4f4ee;
+    text-align: center;
+    background-color: #9f262697;
+    
+}

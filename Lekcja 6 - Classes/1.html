@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasy</title>
+    <p> Wszystkie zadania zrobione w console logu </p>
+    <script>
+        
+        class Prostokat 
+        {
+            constructor(wysokosc, szerokosc, nazwa) 
+            {
+                this.wysokosc = wysokosc;
+                this.szerokosc = szerokosc;
+                this.nazwa = nazwa;
+            }
+            obwod_prostokata() 
+            {
+                return 2 * (this.wysokosc + this.szerokosc);
+            }
+            pole_prostokata() 
+            {
+                return this.wysokosc * this.szerokosc;
+            }
+            WiekszyProstokat(prostokoncix) 
+            {
+                if (this.pole_prostokata() > prostokoncix.pole_prostokata()) 
+                {
+                    return this;
+                } 
+                else 
+                {
+                    return prostokoncix;
+                }
+            }
+        }
+
+        let prostokat1 = new Prostokat(3, 4, "Prostokat 1");
+        let prostokat2 = new Prostokat(5, 6, "Prostokat 2");
+        let prostokat3 = new Prostokat(120, 40, "Prostokat 3");
+        const wiekszy_p = prostokat1.WiekszyProstokat(prostokat3);
+
+        console.log("Obwód i pole 1 prostokąta: " + prostokat1.obwod_prostokata() + ", " + prostokat1.pole_prostokata());
+        console.log("Obwód i pole 2 prostokąta: " + prostokat2.obwod_prostokata() + ", " + prostokat2.pole_prostokata());
+        console.log("Obwód i pole 3 prostokąta: " + prostokat3.obwod_prostokata() + ", " + prostokat3.pole_prostokata());
+        console.log("Prostokat o najwiekszym polu to: " + wiekszy_p.nazwa);
+        console.log("______________________________________");
+
+
+
+
+        class Trojkat 
+        {
+            constructor(dl_podst, wysokosc, nazwa) 
+            {
+                this.dl_podst = dl_podst;
+                this.wysokosc = wysokosc;
+                this.nazwa = nazwa;
+            }
+            pole_trojkata() 
+            {
+                return (this.wysokosc * this.dl_podst) / 2;
+            }
+            static porownanie(trojkat1, trojkat2) 
+            {
+                const pole1 = trojkat1.pole_trojkata();
+                const pole2 = trojkat2.pole_trojkata();
+                const pole3 = trojkat3.pole_trojkata();
+
+                if (pole1 > pole2 && pole1 > pole3) 
+                {
+                    return trojkat1;
+                } 
+                else if (pole2 > pole1 && pole2 > pole3) 
+                {
+                    return trojkat2;
+                } 
+                else if(pole3 > pole1 && pole3 > pole2)
+                {
+                    return trojkat3;
+                }
+                else
+                {
+                  return null;
+                }
+                
+            }
+        }
+
+        let trojkat1 = new Trojkat(3, 4, "Trojkat 1");
+        let trojkat2 = new Trojkat(5, 6, "Trojkat 2");
+        let trojkat3 = new Trojkat(120, 40, "Trojkat 3");       
+
+        console.log("Pole 1 trojkata: " + trojkat1.pole_trojkata());
+        console.log("Pole 2 trojkata: " + trojkat2.pole_trojkata());
+        console.log("Pole 3 trojkata: " + trojkat3.pole_trojkata());
+
+        const wiekszy_t = Trojkat.porownanie(trojkat1, trojkat2, trojkat3);
+        console.log("Trojkat o najwiekszym polu to: " + wiekszy_t.nazwa);
+        console.log("______________________________________");
+
+
+
+
+        class Trapez 
+        {
+            constructor(wysokosc, podstawa1, podstawa2, nazwa) 
+              {
+                this.wysokosc = wysokosc;
+                this.podstawa1 = podstawa1;
+                this.podstawa2 = podstawa2;
+                this.nazwa = nazwa;
+              }
+  
+            pole_trapezu() 
+            {     
+              return ((this.podstawa1 + this.podstawa2) * this.wysokosc) / 2;
+            }
+        }
+
+
+          let trapez1 = new Trapez(3, 4, 5, "Trapez 1");
+          let trapez2 = new Trapez(5, 6, 10, "Trapez 2");
+          let trapez3 = new Trapez(120, 40, 30, "Trapez 3");
+
+          console.log("Pole 1 trapezu: " + trapez1.pole_trapezu()); 
+          console.log("Pole 2 trapezu: " + trapez2.pole_trapezu()); 
+          console.log("Pole 3 trapezu: " + trapez3.pole_trapezu()); 
+          console.log("______________________________________");
+          
+          
+         
+         
+        function NajwiekszePole(prostokat, trojkat, trapez) 
+          {
+            const pole_prostokata = prostokat.pole_prostokata();
+            const pole_trojkata = trojkat.pole_trojkata();
+            const pole_trapezu = trapez.pole_trapezu();
+
+            let sprawdzacz_pole = pole_prostokata;
+            let figura = "Prostokąt";
+
+            if (pole_trojkata > sprawdzacz_pole) 
+            {
+            sprawdzacz_pole = pole_trojkata;
+            figura = "Trójkąt";
+            }
+
+            if (pole_trapezu > sprawdzacz_pole) 
+            {
+            sprawdzacz_pole = pole_trapezu;
+            figura = "Trapez";
+            }
+            console.log(`Największa figura to ${figura} o polu ${sprawdzacz_pole}`);
+
+            
+
+            
+            let wiekszy_p = WiekszyObwod(prostokat1, prostokat3) // zad 5
+                    
+
+        }
+       
+        function WiekszyObwod(prostokat1, prostokat2)
+        {
+          if (prostokat1.obwod_prostokata() > prostokat2.obwod_prostokata())
+          {
+           return prostokat1;
+          } 
+           else 
+          {
+           return prostokat2;
+          }
+        }
+            
+        function ZmieniaczNazwy(prostokat, nowaNazwa)
+        {
+         prostokat.nazwa = nowaNazwa;
+        }
+
+          NajwiekszePole(prostokat1, trojkat2, trapez3); // wywołanie funkcji zad 4
+         
+          console.log("Najwiekszy obwod ma: " + wiekszy_p.nazwa);  
+          
+          
+          ZmieniaczNazwy(prostokat1, "Adam Malysz"); // wywołaniue funkcji zad 6
+          console.log("Nazwa prostokąta 1 po zmianie: " + prostokat1.nazwa);    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

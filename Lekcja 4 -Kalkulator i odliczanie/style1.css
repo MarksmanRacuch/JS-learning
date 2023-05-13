@@ -1,0 +1,59 @@
+#odliczanie
+{
+    color: red;
+}
+#numer1, #numer2
+{
+   border: 1px solid black;
+   margin: 1px;
+}
+#oblicz
+{
+    width: 150px;
+}
+.picasso
+{
+    width: 100%;
+    height: 100vh;
+    background: rgb(192, 172, 190); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.calc
+{
+    background:rgb(174, 39, 70);
+    padding: 15px;
+    border-radius: 10px;
+}
+.calc form input
+{
+    border: 0;
+    outline: 0;
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255,255,255,0.1),5px 5px 15px rgba(73, 37, 114, 0.2);
+    background: transparent;
+    font-size: 20px;
+    color: #fff;
+    margin: 10px;
+    cursor: pointer;
+}
+form .display
+{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+form .display input
+{
+    text-align: right;
+    flex: 1;
+    font-size: 45px;
+    box-shadow: none;
+}
+form input.equal
+{
+    width: 145px;
+}

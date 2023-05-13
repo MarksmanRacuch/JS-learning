@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5</title>
+</head>
+<body>
+
+<script>
+
+document.write("<table>");
+for (let i = 1; i <= 10; i++) 
+{
+  document.write("<tr>");
+  for (let j = 1; j <= 10; j++) 
+  {
+    document.write("<td>" + i*j + "</td>");
+  }
+}
+
+const imiona = ["Robert", "Adam", "Kamil", "Zbigniew", "Józef", "Justyna", "Iga", "Ewa", "Jan", "Kacper", "Brad", "Rocky"];
+const nazwiska = ["Stoch", "Małysz", "Lewandowski", "Świątek", "Kowalczyk", "Chodakowska", "Wodecki", "Piłsudski", "Juroszek", "Pitt", "Balboa"];
+
+const osoba = [];
+
+for (let i = 0; i < 20; i++) 
+{
+  const imie = imiona[Math.floor(Math.random() * imiona.length)];
+  const nazwisko = nazwiska[Math.floor(Math.random() * nazwiska.length)];
+  const wiek = Math.floor(Math.random() * 63) + 18;
+  const telefon = Math.floor(Math.random() * 3000000) + 5000000;
+
+  const ludzie = 
+  {
+    "Imie": imie,
+    "Nazwisko": nazwisko,
+    "Wiek": wiek,
+    "Telefon": telefon,
+  };
+
+  osoba.push(ludzie);
+}
+
+console.log(osoba);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!-- 
+   Przepraszam że dane wyświetlane w jednym pliku, bo święta są przyjechali goście,
+    a o 21:00 już nie będę mieć siły by zrobić to w oddzielnym pliku.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	
+  <title>Bank WSIZ</title>
+	
+  <style>
+		
+    #ramka 
+    {
+			border: 5px solid rgb(141, 20, 107);
+			padding: 10px;
+			float: right;
+			width: 25%;
+		}
+	
+  </style>
+</head>
+
+	<body text = "orangered" bgcolor = "pink">
+	<h1> <b>&nbsp&nbsp&nbspWitamy w Banku WSIZowym!</h1> </b>
+	<form>
+
+		<label> Numer konta:</label>
+		<input type="text" id="numer">  
+		<label for="PIN">&nbsp&nbspPIN:</label>
+		<input type="password" id="PIN">
+		<button type="button" onclick="login()">Zaloguj się </button> <!-- podłączamy funkcje login() z JS do buttona -->
+
+		<div id="ramka">
+			<h2> Ściąga do logowania: </h2>
+			<p><b> Adam Małysz - Numer konta: 1 - PIN: 2011</p></b>
+			<p><b> Robert Kubica - Numer konta: 2 - PIN: 1111</p></b>
+			<p><b> Mietek Dziadek - Numer konta: 3 - PIN: 2137</p></b>
+		</div>
+
+  <div id="panel" style="display:none"> <!-- ukrywamy diva, by użytkownik nie widział go przez zalogowaniem -->
+   
+    <h2>Dane użytkownika</h2>
+    <p>Imię: <span id="imie"></span></p> <!-- tworzymy "spany" które będą dynamicznie wyświetlać nazwy z JSONa -->
+    <p>Nazwisko: <span id="nazwisko"></span></p> 
+    <p>Stan konta: <span id="hajsy"></span> zł</p>
+    <label for="kwota">Wpłata/Wypłata:</label>
+    <input type="number" id="kwota">
+    <button type="button" onclick="wplac()">Wpłać</button> <!-- podłączamy funkcje wplac() z JS do buttona -->
+    <button type="button" onclick="wyplac()">Wypłać</button> <!-- podłączamy funkcje wyplac() z JS do buttona -->
+  
+  </div>
+  
+  <script>
+
+  const użytkownicy = 
+  {
+
+    "1": //identyfikator JSONa
+    {
+      "imie": "Adam",
+      "nazwisko": "Malysz",
+      "hajsy": 100000,
+      "PIN": "2011"
+    },
+    "2": //identyfikator JSONa
+    {
+      "imie": "Robert",
+      "nazwisko": "Kubica",
+      "hajsy": 500000,
+      "PIN": "1111"
+    },
+    "3": //identyfikator JSONa
+    {
+      "imie": "Mietek",
+      "nazwisko": "Dziadek",
+      "hajsy": 5,
+      "PIN": "2137"
+    }
+  };
+  
+function login() 
+{
+    const CheckNumber = document.getElementById("numer").value; //pobieramy wartość numeru od użytkownika z inputa i zamieniamy ją w CheckNumber
+    const CheckPIN = document.getElementById("PIN").value; //pobieramy wartość PINu od użytkownika z inputa i zamieniamy ją w CheckPIN
+    
+    const użytkownik = użytkownicy[CheckNumber]; // pobieramy wartość klucza z JSONa 
+    
+    if (użytkownik && użytkownik.PIN === CheckPIN) //sprawdzamy czy dane się zgadzają, jeśli nie to wyrzucamy alertem błąd
+    {
+      document.getElementById("imie").innerText = użytkownik.imie;
+      document.getElementById("nazwisko").innerText = użytkownik.nazwisko;
+      document.getElementById("hajsy").innerText = użytkownik.hajsy;
+      document.getElementById("panel").style.display = "block"; // zamieniamy "block" na "display", dzieki czemu "panel" zostaje wyswietlony
+    } 
+    else                                                      
+    {
+      alert("Nieprawidłowy numer konta lub PIN. Spróbuj ponownie.");
+    }
+}
+
+function wplac()
+{
+    const kwota = parseFloat(document.getElementById("kwota").value);
+    const StanKonta = parseFloat(document.getElementById("hajsy").innerText);
+  
+    if (isNaN(kwota) || kwota <= 0) // zabezpieczamy program sprawdzając czy kwota nie jest równa NaN lub jest mniejsza bądź równa 0
+    {
+      alert("Wprowadź poprawną kwotę.");
+      return;
+    }
+  
+  const NowyStanKonta = StanKonta + kwota; // wartość po zmianie
+  document.getElementById("hajsy").innerText = NowyStanKonta; // nadpisujemy stan konta
+  alert(`Wpłacono ${kwota} zł. Twój aktualny stan konta wynosi ${NowyStanKonta} zł.`); // dajemy informacje o wpłacie alertem
+}
+
+
+function wyplac() //przekopiowanez wplac(), trzeba tylko sprawdzić czy wypłacana kwota nie przewyższa stanu konta i zamienić wartość z dodawania na odejmowanie
+{
+  const kwota = parseFloat(document.getElementById("kwota").value);
+  const StanKonta = parseFloat(document.getElementById("hajsy").innerText);
+  
+  if (isNaN(kwota) || kwota <= 0 || kwota > StanKonta) 
+  {
+    alert("Wprowadź poprawną kwotę.");
+    return;
+  }
+  
+  const NowyStanKonta = StanKonta - kwota;
+  document.getElementById("hajsy").innerText = NowyStanKonta;
+  alert(`Wypłacono ${kwota} zł. Twój aktualny stan konta wynosi ${NowyStanKonta} zł.`);
+}
+  
+</script>
+</body>
+</html>
